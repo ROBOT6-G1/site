@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - DEVWEB Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-black gradient-text flex items-center gap-2">
+        <i class="fa-solid fa-code text-purple-500"></i> DEVWEBIA
+      </a>
+      <div class="hidden md:flex gap-6 font-semibold text-sm">
+        <a href="index.html" class="hover:text-purple-400 transition">Fandraisana</a>
+        <a href="services.html" class="hover:text-purple-400 transition">Serivisy</a>
+        <a href="faq.html" class="text-purple-400">FAQ</a>
+        <a href="contact.html" class="hover:text-purple-400 transition">Mifandray</a>
+      </div>
+      <a href="reservation.html" class="gradient-bg px-5 py-2.5 rounded-full text-white font-bold text-sm shadow-lg">
+        Manao Rendez-vous
+      </a>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-32 pb-20 px-6 max-w-4xl mx-auto space-y-12">
+    <div class="text-center space-y-4">
+      <span class="text-purple-400 uppercase tracking-widest text-xs font-bold">Pyetje sy Valiny</span>
+      <h1 class="text-4xl font-extrabold">Foire Aux <span class="gradient-text">Questions</span></h1>
+      <p class="text-slate-400">Ireo fanontaniana mpetraka matetika momba ny fitaovana sy ny asa.</p>
+    </div>
+
+    <div class="space-y-4" id="faq-container">
+      <!-- JS populates dynamic accordion -->
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
