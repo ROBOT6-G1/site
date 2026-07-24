@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - DEVWEB Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Auth Modal Screen -->
+  <div id="login-screen" class="fixed inset-0 bg-slate-950/95 z-50 flex items-center justify-center p-6">
+    <div class="glass-card p-8 rounded-3xl max-w-md w-full space-y-6 border border-slate-800 text-center shadow-2xl">
+      <i class="fa-solid fa-user-shield text-5xl text-purple-500"></i>
+      <h2 class="text-2xl font-black">Espace Administration</h2>
+      <p class="text-slate-400 text-xs">Ampidiro ny mot de passe mba hidirana (Par défaut: 1234)</p>
+      <form id="login-form" class="space-y-4">
+        <input type="password" id="admin-pass" placeholder="Mot de passe" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-center text-lg focus:border-purple-500 focus:outline-none">
+        <button type="submit" class="w-full gradient-bg py-3.5 rounded-xl font-bold text-white hover:opacity-90 transition">
+          Hiditra
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard Interface -->
+  <div id="admin-dashboard" class="hidden flex-grow flex flex-col md:flex-row">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-slate-900 border-r border-slate-800 p-6 space-y-8">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="text-xl font-black gradient-text">DEVWEB Admin</a>
+        <button id="logout-btn" class="text-slate-400 hover:text-red-400 text-sm"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+      <nav class="space-y-2 text-sm font-semibold">
+        <button class="tab-btn active w-full text-left px-4 py-3 rounded-xl bg-purple-600/20 text-purple-300 flex items-center gap-3" data-tab="content">
+          <i class="fa-solid fa-pen-to-square"></i> Editeur Content
+        </button>
+        <button class="tab-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 text-slate-400 flex items-center gap-3" data-tab="services">
+          <i class="fa-solid fa-list-check"></i> Serivisy & Tarifs
+        </button>
+        <button class="tab-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 text-slate-400 flex items-center gap-3" data-tab="messages">
+          <i class="fa-solid fa-envelope"></i> Messages & RDV
+        </button>
+        <button class="tab-btn w-full text-left px-4 py-3 rounded-xl hover:bg-slate-800 text-slate-400 flex items-center gap-3" data-tab="security">
+          <i class="fa-solid fa-lock"></i> Fiarovana
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Content Panel -->
+    <main class="flex-grow p-8 space-y-8 overflow-y-auto">
+      <!-- TAB 1: CONTENT -->
+      <div id="tab-content" class="tab-panel space-y-6">
+        <h2 class="text-2xl font-bold">Modifier le Hero & Présentation (10 Options)</h2>
+        <div class="glass-card p-6 rounded-2xl space-y-4 border border-slate-800">
+          <div>
+            <label class="block text-xs font-bold text-slate-400 mb-2"> Hero Description Text</label>
+            <textarea id="admin-hero-desc" rows="3" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-400 mb-2">Sary Hero (Upload / Canvas Compress <150KB)</label>
+            <input type="file" id="hero-file-input" class="block w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-purple-600/20 file:text-purple-300 hover:file:bg-purple-600/30">
+            <div id="hero-preview" class="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-slate-700 hidden">
+              <img src="" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <button id="save-hero-btn" class="gradient-bg px-6 py-2.5 rounded-xl font-bold text-sm shadow-md">
+            Tehirizina ny Ovany
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 2: SERVICES & TARIFS -->
+      <div id="tab-services" class="tab-panel hidden space-y-6">
+        <h2 class="text-2xl font-bold">Gestionnaire de Services</h2>
+        <form id="add-service-form" class="glass-card p-6 rounded-2xl space-y-4 border border-slate-800">
+          <div class="grid md:grid-cols-2 gap-4">
+            <input type="text" id="s-title" placeholder="Anaran'ny Serivisy" required class="bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none">
+            <input type="text" id="s-price" placeholder="Tarify (ex: 300 000 Ar)" required class="bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none">
+          </div>
+          <textarea id="s-desc" placeholder="Famaritana fohy" required class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none"></textarea>
+          <button type="submit" class="gradient-bg px-6 py-2.5 rounded-xl font-bold text-sm">
+            Ampio Serivisy Vaovao
+          </button>
+        </form>
+        <div class="space-y-3" id="admin-services-list">
+          <!-- Dynamic Services List -->
+        </div>
+      </div>
+
+      <!-- TAB 3: MESSAGES & RESERVATIONS -->
+      <div id="tab-messages" class="tab-panel hidden space-y-6">
+        <h2 class="text-2xl font-bold">Hafatra & Rendez-vous Voaray</h2>
+        <div class="space-y-4" id="admin-messages-list">
+          <!-- Dynamic Load -->
+        </div>
+      </div>
+
+      <!-- TAB 4: SECURITY -->
+      <div id="tab-security" class="tab-panel hidden space-y-6">
+        <h2 class="text-2xl font-bold">Fiarovana Admin</h2>
+        <div class="glass-card p-6 rounded-2xl max-w-md space-y-4 border border-slate-800">
+          <label class="block text-xs font-bold text-slate-400 mb-1">Mot de Passe Vaovao</label>
+          <input type="password" id="new-admin-pass" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none">
+          <button id="save-pass-btn" class="gradient-bg w-full py-3 rounded-xl font-bold text-sm">
+            Hanova Mot de Passe
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
