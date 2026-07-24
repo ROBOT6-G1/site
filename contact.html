@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mifandray - DEVWEB Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen">
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-black gradient-text flex items-center gap-2">
+        <i class="fa-solid fa-code text-purple-500"></i> DEVWEBIA
+      </a>
+      <div class="hidden md:flex gap-6 font-semibold text-sm">
+        <a href="index.html" class="hover:text-purple-400 transition">Fandraisana</a>
+        <a href="services.html" class="hover:text-purple-400 transition">Serivisy</a>
+        <a href="contact.html" class="text-purple-400">Mifandray</a>
+      </div>
+      <a href="reservation.html" class="gradient-bg px-5 py-2.5 rounded-full text-white font-bold text-sm shadow-lg">
+        Manao Rendez-vous
+      </a>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto space-y-12">
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
+      <h1 class="text-4xl font-extrabold">Mifandray amin'i <span class="gradient-text">DEVWEBIA</span></h1>
+      <p class="text-slate-400 text-sm">Manao fangatahana devis na mandefa hafatra mivantana amin'ny ekipantsika.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <form id="contact-form" class="glass-card p-8 rounded-2xl space-y-6 border border-slate-700/60">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">Anarana feno</label>
+          <input type="text" id="c-name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">Email</label>
+          <input type="email" id="c-email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">Hafatra</label>
+          <textarea id="c-message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:border-purple-500 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full gradient-bg py-3.5 rounded-xl font-bold text-white shadow-lg hover:opacity-90 transition">
+          Mandefa Hafatra
+        </button>
+      </form>
+
+      <div class="space-y-8 flex flex-col justify-between">
+        <div class="glass-card p-8 rounded-2xl space-y-6 border border-slate-700/60">
+          <h3 class="text-xl font-bold">Coordonnées</h3>
+          <div class="space-y-4 text-sm text-slate-300">
+            <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-purple-400 text-lg"></i> +261 34 00 000 00</p>
+            <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-purple-400 text-lg"></i> contact@devwebia.mg</p>
+            <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-purple-400 text-lg"></i> Antananarivo, Madagasikara</p>
+          </div>
+        </div>
+        <a href="https://wa.me/261340000000" target="_blank" class="bg-green-600 hover:bg-green-500 text-white p-4 rounded-2xl flex items-center justify-center gap-3 font-bold shadow-lg transition">
+          <i class="fa-brands fa-whatsapp text-2xl"></i> Mifandray amin'ny WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
